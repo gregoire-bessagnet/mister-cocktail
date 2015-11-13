@@ -1,42 +1,37 @@
 <div class="text-center">
 
-<h1><%= @cocktail.name %></h1>
+  <h1><%= @cocktail.name %></h1>
 
-<ul class="list-unstyled">
-<% @cocktail.doses.each do |dose| %>
-<li>
-  <%= dose.description %> (<%= dose.ingredient.name %>)
-</li>
-<% end %>
+  <ul class="list-unstyled">
+  <% @cocktail.doses.each do |dose| %>
+    <li>
+      <%= dose.description %> (<%= dose.ingredient.name %>) <%= link_to "&times;".html_safe , dose, method: :delete %>
+    </li>
+  <% end %>
 
-</ul>
+  </ul>
 
-<br><br>
+  <br><br>
 
-<%= link_to "back to home", cocktails_path %>  |
-<%= link_to "destroy the cocktail", cocktail_path(@cocktail), method: :delete %>
+  <%= link_to "back to home", cocktails_path %>  |
+  <%= link_to "destroy the cocktail", cocktail_path(@cocktail), method: :delete %>
 
-<hr>
+  <hr>
 
-<%= link_to "add a new dose", @new_cocktail_dose_path %>
+  <%= link_to "add a new dose", @new_cocktail_dose_path %>
 
-<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
 
-<% if @dose.errors.any? %>
+    <% if @dose.errors.any? %>
+      <% @dose.errors.full_messages.each do |message| %>
+        <li> <% message %> </li>
+      <% end %>
+    <% end %>
 
-<% @dose.errors.full_messages.each do |message| %>
+    <%= f.input :description, placeholder: "6cl au moins" %>
+    <%= f.input :ingredient_id, collection: Ingredient.all, prompt: "Choose and ingredient !" %>
+    <%= f.button :submit, class: "btn btn-primary" %>
 
-<li> <% message %> </li>
-
-<% end %>
-
-
-<% end %>
-
-<%= f.input :description, placeholder: "6cl au moins" %>
-<%= f.input :ingredient_id, collection: Ingredient.all, prompt: "Choose and ingredient !" %>
-<%= f.button :submit, class: "btn btn-primary" %>
-
-<% end %>
+  <% end %>
 
 </div>

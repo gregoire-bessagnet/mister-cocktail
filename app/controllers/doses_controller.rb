@@ -1,7 +1,6 @@
 class DosesController < ApplicationController
 
-    before_action :set_cocktail, only: [ :create ]
-
+  before_action :set_cocktail, only: [ :create ]
 
   def create
     @dose = @cocktail.doses.build(dose_params)
@@ -18,12 +17,10 @@ class DosesController < ApplicationController
     redirect_to @dose.cocktail
   end
 
-
-
   private
 
   def dose_params
-    params.require(:dose).permit(:description, :cocktail_id, :ingredient_id)
+    params.require(:dose).permit(:description, :ingredient_id)
   end
 
   def set_cocktail
