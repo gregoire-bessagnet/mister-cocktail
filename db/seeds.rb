@@ -6,7 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+puts "-- Destroy all the things!"
+
+Dose.destroy_all
 Ingredient.destroy_all
+Cocktail.destroy_all
 
 ingredients = [
 'Angostura Bitter',
@@ -69,9 +73,9 @@ ingredients = [
 'Worcestershire Sauce'
 ]
 
+puts "-- Create all ingredients"
 ingredients.each { |ingredient| Ingredient.create(name: ingredient) }
 
-Cocktail.destroy_all
 
 cocktails = [
   {
@@ -160,4 +164,9 @@ cocktails = [
   }
 ]
 
-cocktails.each { |cocktail| Cocktail.create(cocktail) }
+puts "-- Create all cocktails"
+cocktails.each do |cocktail|
+  Cocktail.create(name: cocktail[:name], remote_picture_url: cocktail[:picture])
+end
+
+puts "-- Seed: my job is done here."
