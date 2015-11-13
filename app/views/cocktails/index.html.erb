@@ -5,9 +5,10 @@
 
 <% @cocktails.each do |cocktail| %>
   <h2>
-  <%= link_to cocktail do %>
-  <%= cocktail.id %>. <%= cocktail.name %>
-    <% end %></h2>
-  <p><%= cocktail.picture %></p>
+    <%= link_to cocktail do %>
+      <%= cocktail.id %>. <%= cocktail.name %>
+    <% end %>
+  </h2>
+  <%= image_tag(cocktail.picture) %>
 <% end %>
 
