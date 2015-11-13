@@ -1,20 +1,30 @@
-<h1>Mon cocktail</h1>
+<div class="text-center">
 
+<h1><%= @cocktail.name %></h1>
 
+<!--
 <p>Name</p>
 <%= @cocktail.name %>
 <p>Description</p>
 <%= @cocktail.picture %>
-<br><br>
-<%= link_to "back to home", root_path %>  |  <%= link_to "destroy the cocktail", @cocktail.delete %>
-
-<p>- - - - - - - - - - - - -</p>
-
-<p>Ingredients</p>
+<br><br> -->
 
 
 
+<%= link_to "back to home", cocktail_path %>  |  <%= link_to "destroy the cocktail", @cocktail.delete %>
 
-<%= link_to "add a new dose", @new_cocktail_dose_path %>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+
+<% f.input :description, placeholder: "6cl au moins" %>
+<% f.input :ingredient_id, collection: Ingredient.all, prompt: "Choose and ingredient !" %>
+<% f.button :submit, class: "btn btn-primary" %>
+
+<% end %>
 
 
+<!--
+<%= link_to "add a new dose", @new_cocktail_dose_path %>-->
+
+
+</div>
