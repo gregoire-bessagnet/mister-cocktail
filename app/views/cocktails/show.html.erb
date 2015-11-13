@@ -1,6 +1,7 @@
 <div class="text-center">
 
   <h1><%= @cocktail.name %></h1>
+  <%= image_tag(@cocktail.picture) %>
 
   <ul class="list-unstyled">
   <% @cocktail.doses.each do |dose| %>
@@ -35,3 +36,4 @@
   <% end %>
 
 </div>
+
