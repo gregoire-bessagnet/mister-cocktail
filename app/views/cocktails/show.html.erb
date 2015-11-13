@@ -1,2 +1,20 @@
-<h1>Cocktails#show</h1>
-<p>Find me in app/views/cocktails/show.html.erb</p>
+<h1>Mon cocktail</h1>
+
+
+<p>Name</p>
+<%= @cocktail.name %>
+<p>Description</p>
+<%= @cocktail.picture %>
+<br><br>
+<%= link_to "back to home", root_path %>  |  <%= link_to "destroy the cocktail", @cocktail.delete %>
+
+<p>- - - - - - - - - - - - -</p>
+
+<p>Ingredients</p>
+
+
+
+
+<%= link_to "add a new dose", @new_cocktail_dose_path %>
+
+

@@ -1,2 +1,7 @@
-<h1>Doses#new</h1>
-<p>Find me in app/views/doses/new.html.erb</p>
+<h1>Add a new dose</h1>
+
+<%= form_for [@dose] do |f| %>
+  <%= f.label :description %><br>
+  <%= f.text_field :description %><br>
+  <%= f.submit "add a dose" %>
+<% end %>
